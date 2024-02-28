@@ -1,6 +1,6 @@
 // Importaciones de bibliotecas y componentes
 import { useEffect, useState, useRef } from "react";
-import "./Board.css";
+import "../styles/Board.css";
 import Square from "./Square";
 import checkWinner from "../utils/winner.js";
 import slashPos from "../utils/winSlash.js";
@@ -12,7 +12,7 @@ function Board() {
   const [player, setPlayer] = useState(0);
   const [state, setState] = useState(Array(9).fill(null));
   const [isWinner, setIsWinner] = useState(false);
-  const [status, setStatus] = useState("Player 0");
+  const [status, setStatus] = useState("Turn: Player 0");
   const [winStyles, setWinStyles] = useState({});
   const [play, setPlay] = useState(true);
   // Referencia para medir la altura del tablero
@@ -24,7 +24,7 @@ function Board() {
     setPlayer(0);
     setState(Array(9).fill(null));
     setIsWinner(false);
-    setStatus("Player 0");
+    setStatus("Turn: Player 0");
     setWinStyles({});
     setPlay(true);
   };
@@ -49,7 +49,7 @@ function Board() {
     setState(newState);
     let nextplayer = (player + 1) % 2;
     setPlayer(nextplayer);
-    setStatus(`Player ${nextplayer}`);
+    setStatus(`Turn: Player ${nextplayer}`);
     return thePlayer;
   };
 
