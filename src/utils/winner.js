@@ -9,16 +9,14 @@ export default function checkWinner(state) {
     [0, 4, 8],
     [2, 4, 6],
   ];
-
+  console.log("checkWinner state", state);
   for (let i = 0; i < win.length; i++) {
     const [a, b, c] = win[i];
-    if (state[a] === state[b] && state[b] === state[c] && state[a] !== null ) {
-      let code = win[i].join('');
+    if (state[a] === state[b] && state[b] === state[c] && state[a] !== null) {
+      let code = win[i].join("");
       let player = state[a];
-      console.log(code);
-      return [player, code]
+      return [player, code];
     }
   }
   return null;
 }
-
