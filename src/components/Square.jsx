@@ -1,5 +1,14 @@
 import { useEffect, useState } from "react";
 
+ /* 
+ Componente Square: representa un cuadrado en el tablero del juego Tic-Tac-Toe.
+ Props:
+ - id: Identificador único del cuadrado.
+ - newState: Función para actualizar el estado del juego después de que un jugador realiza un movimiento.
+ - won: Booleano que indica si el juego ha sido ganado.
+ - play: Booleano que indica si el juego está en curso y es el turno de un jugador. 
+ */
+
 function Square({ id, newState, won, play }) {
   const [status, setStatus] = useState(null);
   const [disabled, setDisabled] = useState(false);
@@ -9,16 +18,14 @@ function Square({ id, newState, won, play }) {
   useEffect(() => {
     setDisabled(won);
     if (play) setStatus(null);
-  }, [won]);
+  }, [won, play]);
 
-  const hadleClicOne = (e) => {
+  const hadleClicOne = () => {
     if (status === null) {
       let nextplayer = newState(id);
       setStatus(nextplayer);
     }
   };
-
-  console.log("status", status);
 
   return (
     <button disabled={disabled} onClick={hadleClicOne}>
