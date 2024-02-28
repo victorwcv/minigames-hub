@@ -1,6 +1,6 @@
 # Tic-Tac-Toe en React
 
-Este proyecto es una implementación del clásico juego Tic-Tac-Toe utilizando la biblioteca React. Es una aplicación simple pero divertida que puede servir como proyecto de aprendizaje para quienes estén comenzando con React o para aquellos que deseen practicar sus habilidades.
+Este proyecto es una implementación del clásico juego Tic-Tac-Toe o Tres en Raya utilizando la biblioteca React. Es una aplicación simple pero divertida que puede servir como proyecto de aprendizaje para quienes estén comenzando con React o para aquellos que deseen practicar sus habilidades.
 
 ## Características
 
@@ -23,3 +23,7 @@ Las contribuciones son bienvenidas. Si deseas mejorar este proyecto, siéntete l
 ## Licencia
 
 Este proyecto está bajo la Licencia MIT. Para más detalles, consulta el archivo `LICENSE`.
+
+## Nota
+
+Este proyecto fue desarrollado con los conocimientos adquiridos durante el programa de certificación profesional como desarrollador Full Stack del MIT xPro.
