@@ -1,10 +1,11 @@
-import { useEffect } from "react";
-import { useParams, useNavigate } from "react-router";
-import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
-import { Layout } from "@/components/Layout";
-import { useGameStore } from "@/store/gameStore";
-import type { GameId } from "@/types";
+import { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router';
+import { motion } from 'framer-motion';
+import { ArrowLeft } from 'lucide-react';
+import { Layout } from '@/components/Layout';
+import { useGameStore } from '@/store/gameStore';
+import type { GameId } from '@/types';
+import { TicTacToe } from '@/games/tic-tac-toe';
 
 export const GamePage = () => {
   const { gameId } = useParams<{ gameId: GameId }>();
@@ -19,7 +20,32 @@ export const GamePage = () => {
   }, [gameId, setCurrentGame]);
 
   const handleBack = () => {
-    navigate("/");
+    navigate('/');
+  };
+
+  const renderGame = () => {
+    switch (gameId) {
+      case 'tic-tac-toe':
+        return <TicTacToe />;
+      case 'snake':
+        return (
+          <div className="flex items-center justify-center h-96 bg-gray-50 rounded-xl border-4 border-dashed border-gray-300">
+            <p className="text-2xl text-gray-400">🐍 Snake - Próximamente...</p>
+          </div>
+        );
+      case 'simon':
+        return (
+          <div className="flex items-center justify-center h-96 bg-gray-50 rounded-xl border-4 border-dashed border-gray-300">
+            <p className="text-2xl text-gray-400">🎨 Simon - Próximamente...</p>
+          </div>
+        );
+      default:
+        return (
+          <div className="flex items-center justify-center h-96 bg-gray-50 rounded-xl border-4 border-dashed border-gray-300">
+            <p className="text-2xl text-gray-400">Juego no encontrado</p>
+          </div>
+        );
+    }
   };
 
   return (
@@ -39,26 +65,14 @@ export const GamePage = () => {
             Volver
           </button>
           <h1 className="text-3xl font-bold text-gray-800 flex-grow">
-            {gameId === "tic-tac-toe" && "Tres en Raya"}
-            {gameId === "snake" && "Snake"}
-            {gameId === "simon" && "Simon Dice"}
+            {gameId === 'tic-tac-toe' && '❌⭕ Tres en Raya'}
+            {gameId === 'snake' && '🐍 Snake (Gusanito)'}
+            {gameId === 'simon' && '🎨 Simon Dice'}
           </h1>
         </div>
 
-        {/* Área del juego - placeholder por ahora */}
-        <div className="flex items-center justify-center h-96 bg-gray-50 rounded-xl border-4 border-gray-200">
-          <p className="text-2xl text-gray-400">🎮 El juego se cargará aquí...</p>
-        </div>
-
-        {/* Controles placeholder */}
-        <div className="flex gap-4 justify-center mt-8">
-          <button className="px-6 py-3 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg transition-all hover:scale-105">
-            Nuevo Juego
-          </button>
-          <button className="px-6 py-3 bg-white hover:bg-gray-50 border-2 border-gray-200 text-gray-700 font-semibold rounded-lg transition-all hover:scale-105">
-            Reiniciar
-          </button>
-        </div>
+        {/* Área del juego */}
+        {renderGame()}
       </motion.div>
     </Layout>
   );

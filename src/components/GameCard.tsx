@@ -13,7 +13,7 @@ export const GameCard = ({ game, index }: GameCardProps) => {
 
   return (
     <motion.div
-      whileHover={{ y: -10, transition: { duration: 0.2 } }}
+      whileHover={{ y: -7, transition: { duration: 0.3 } }}
       className="flex flex-col bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-gray-100"
     >
       <motion.div

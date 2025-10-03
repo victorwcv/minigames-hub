@@ -4,7 +4,7 @@ interface LayoutProps {
 
 export const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
+    <div className="min-h-screen bg-gray-50 py-2 sm:py-8 px-1 sm:px-4">
       <div className="max-w-7xl mx-auto">{children}</div>
     </div>
   );
