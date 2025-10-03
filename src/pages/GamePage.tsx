@@ -1,11 +1,12 @@
-import { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router';
-import { motion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
-import { Layout } from '@/components/Layout';
-import { useGameStore } from '@/store/gameStore';
-import type { GameId } from '@/types';
-import { TicTacToe } from '@/games/tic-tac-toe';
+import { useEffect } from "react";
+import { useParams, useNavigate } from "react-router";
+import { motion } from "framer-motion";
+import { ArrowLeft } from "lucide-react";
+import { Layout } from "@/components/Layout";
+import { useGameStore } from "@/store/gameStore";
+import type { GameId } from "@/types";
+import { TicTacToe } from "@/games/tic-tac-toe";
+import { Snake } from "@/games/snake";
 
 export const GamePage = () => {
   const { gameId } = useParams<{ gameId: GameId }>();
@@ -20,20 +21,16 @@ export const GamePage = () => {
   }, [gameId, setCurrentGame]);
 
   const handleBack = () => {
-    navigate('/');
+    navigate("/");
   };
 
   const renderGame = () => {
     switch (gameId) {
-      case 'tic-tac-toe':
+      case "tic-tac-toe":
         return <TicTacToe />;
-      case 'snake':
-        return (
-          <div className="flex items-center justify-center h-96 bg-gray-50 rounded-xl border-4 border-dashed border-gray-300">
-            <p className="text-2xl text-gray-400">🐍 Snake - Próximamente...</p>
-          </div>
-        );
-      case 'simon':
+      case "snake":
+        return <Snake />;
+      case "simon":
         return (
           <div className="flex items-center justify-center h-96 bg-gray-50 rounded-xl border-4 border-dashed border-gray-300">
             <p className="text-2xl text-gray-400">🎨 Simon - Próximamente...</p>
@@ -65,9 +62,9 @@ export const GamePage = () => {
             Volver
           </button>
           <h1 className="text-3xl font-bold text-gray-800 flex-grow">
-            {gameId === 'tic-tac-toe' && '❌⭕ Tres en Raya'}
-            {gameId === 'snake' && '🐍 Snake (Gusanito)'}
-            {gameId === 'simon' && '🎨 Simon Dice'}
+            {gameId === "tic-tac-toe" && "❌⭕ Tres en Raya"}
+            {gameId === "snake" && "🐍 Snake (Gusanito)"}
+            {gameId === "simon" && "🎨 Simon Dice"}
           </h1>
         </div>
 
