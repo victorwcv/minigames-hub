@@ -24,14 +24,14 @@ export const GAMES: Game[] = [
     gradient: "from-primary-light to-primary",
   },
   {
-    id: "simon",
-    title: "Simon Dice",
+    id: "pairs",
+    title: "Pairs",
     description:
-      "Pon a prueba tu memoria siguiendo la secuencia de colores. ¿Hasta qué nivel puedes llegar?",
-    icon: "🎨",
+      "Encuentra todos los pares de cartas antes de que se acabe el tiempo. Cada par encontrado te da tiempo extra.",
+    icon: "🃏",
     players: "1 jugador",
-    duration: "3-8 min",
-    route: "/game/simon",
+    duration: "3-10 min",
+    route: "/game/pairs",
     gradient: "from-primary to-primary-light",
   },
 ];

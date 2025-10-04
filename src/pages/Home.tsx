@@ -2,6 +2,7 @@ import { Header } from '@/components/Header';
 import { GameCard } from '@/components/GameCard';
 import { Layout } from '@/components/Layout';
 import { GAMES } from '@/utils/constants';
+import { ComingSoonCard } from '@/components/ComingSoonCard';
 
 export const Home = () => {
   return (
@@ -12,6 +13,8 @@ export const Home = () => {
         {GAMES.map((game, index) => (
           <GameCard key={game.id} game={game} index={index} />
         ))}
+        
+        <ComingSoonCard index={GAMES.length} />
       </div>
     </Layout>
   );

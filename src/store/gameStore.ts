@@ -12,7 +12,7 @@ export const useGameStore = create<GameStore>((set) => ({
   scores: {
     'tic-tac-toe': 0,
     'snake': 0,
-    'simon': 0,
+    'pairs': 0,
   },
   setCurrentGame: (gameId) => set({ currentGame: gameId }),
   updateScore: (gameId, score) =>
@@ -27,7 +27,7 @@ export const useGameStore = create<GameStore>((set) => ({
       scores: {
         'tic-tac-toe': 0,
         'snake': 0,
-        'simon': 0,
+        'pairs': 0,
       },
     }),
 }));

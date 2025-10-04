@@ -7,3 +7,9 @@
   --color-dark: #3b4d54;
   --color-dark-light: #4a5d66;
 }
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+}

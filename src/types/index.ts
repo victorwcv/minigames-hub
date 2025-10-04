@@ -9,7 +9,7 @@ export interface Game {
   gradient: string;
 }
 
-export type GameId = "tic-tac-toe" | "snake" | "simon";
+export type GameId = "tic-tac-toe" | "snake" | "pairs";
 
 export interface GameState {
   currentGame: GameId | null;
