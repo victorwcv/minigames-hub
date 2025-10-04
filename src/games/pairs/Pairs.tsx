@@ -12,7 +12,7 @@ const DIFFICULTY_LABELS: Record<Difficulty, string> = {
 export const Pairs = () => {
   const {
     cards,
-    //difficulty,
+    difficulty,
     matchedPairs,
     totalPairs,
     moves,
@@ -41,22 +41,6 @@ export const Pairs = () => {
         {/* Panel lateral */}
         <div className="space-y-6">
           {/* Dificultad */}
-          {!cardsReady && (
-            <div className="bg-gray-50 rounded-2xl p-6 shadow-md">
-              <h3 className="text-lg font-bold text-gray-800 mb-4">Dificultad</h3>
-              <div className="space-y-3">
-                {(["easy", "medium", "hard"] as Difficulty[]).map((diff) => (
-                  <button
-                    key={diff}
-                    onClick={() => prepareCards(diff)}
-                    className="w-full px-5 py-4 rounded-xl font-semibold transition-all bg-white text-gray-700 hover:bg-primary hover:text-white border-2 border-gray-200 hover:border-primary hover:scale-105"
-                  >
-                    {DIFFICULTY_LABELS[diff]}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
 
           {/* Estadísticas */}
           <div className="bg-gray-50 rounded-2xl p-6 shadow-md">
@@ -257,15 +241,17 @@ export const Pairs = () => {
           </div>
 
           {/* Instrucciones */}
-          <div className="bg-gray-50 rounded-2xl p-6 shadow-md">
-            <h3 className="text-sm font-bold text-gray-800 mb-3">📋 Cómo jugar</h3>
-            <div className="space-y-2 text-sm text-gray-600">
-              <p>• Voltea 2 cartas para buscar pares</p>
-              <p>• Cada par suma tiempo extra</p>
-              <p>• Si se acaba el tiempo, pierdes</p>
-              <p>• ¡Encuentra todos los pares!</p>
+          {!cardsReady && gameStatus === "idle" && (
+            <div className="bg-gray-50 rounded-2xl p-6 shadow-md">
+              <h3 className="text-sm font-bold text-gray-800 mb-3">📋 Cómo jugar</h3>
+              <div className="space-y-2 text-sm text-gray-600">
+                <p>• Voltea 2 cartas para buscar pares</p>
+                <p>• Cada par suma tiempo extra</p>
+                <p>• Si se acaba el tiempo, pierdes</p>
+                <p>• ¡Encuentra todos los pares!</p>
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Área del juego */}
@@ -278,7 +264,20 @@ export const Pairs = () => {
             >
               <p className="text-6xl mb-4">🎮</p>
               <p className="text-2xl font-bold text-gray-400">Selecciona una dificultad</p>
-              <p className="text-gray-500 mt-2">para ver el tablero</p>
+
+              <div className="bg-gray-50 rounded-2xl p-6 shadow-md mt-10">
+                <div className="space-y-3">
+                  {(["easy", "medium", "hard"] as Difficulty[]).map((diff) => (
+                    <button
+                      key={diff}
+                      onClick={() => prepareCards(diff)}
+                      className="w-full px-5 py-4 rounded-xl font-semibold transition-all bg-white text-gray-700 hover:bg-primary hover:text-white border-2 border-gray-200 hover:border-primary hover:scale-105"
+                    >
+                      {DIFFICULTY_LABELS[diff]}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </motion.div>
           ) : (
             <div className="w-full max-w-3xl">
@@ -297,17 +296,20 @@ export const Pairs = () => {
                     className="aspect-square perspective-1000"
                   >
                     <motion.div
-                      onClick={() => flipCard(card.id)}
+                      onClick={() => {
+                        if (!card.isMatched) flipCard(card.id); // <- no permites volver a dar vuelta si ya está matched
+                      }}
                       className={`
-                      relative w-full h-full cursor-pointer
-                      ${card.isMatched ? "opacity-50 cursor-not-allowed" : ""}
-                      ${
-                        !card.isFlipped && !card.isMatched && gameStatus === "playing"
-                          ? "hover:scale-105"
-                          : ""
-                      }
-                    `}
+                        relative w-full h-full cursor-pointer
+                        ${card.isMatched ? "opacity-100 cursor-default" : ""}
+                        ${
+                          !card.isFlipped && !card.isMatched && gameStatus === "playing"
+                            ? "hover:scale-105"
+                            : ""
+                        }
+                      `}
                       animate={{
+                        // cuando está volteada o está matched, muestro el contenido
                         rotateY: card.isFlipped || card.isMatched ? 180 : 0,
                       }}
                       transition={{
@@ -319,7 +321,7 @@ export const Pairs = () => {
                         transformStyle: "preserve-3d",
                       }}
                     >
-                      {/* Parte trasera de la carta (dorso - la que ves inicialmente) */}
+                      {/* back */}
                       <div
                         className="absolute inset-0 w-full h-full rounded-2xl flex items-center justify-center bg-gradient-to-br from-primary to-primary-dark shadow-xl"
                         style={{
@@ -328,27 +330,22 @@ export const Pairs = () => {
                         }}
                       >
                         <div className="w-1/3 h-1/3 bg-white/95 rounded-full">
-                          <img src="/vc-logo.png" alt="logo" className="" />
+                          <img src="/vc-logo.png" alt="logo" />
                         </div>
                       </div>
 
-                      {/* Parte delantera de la carta (contenido) */}
+                      {/* front */}
                       <div
-                        className={`
-                        absolute inset-0 w-full h-full rounded-2xl flex items-center justify-center shadow-xl
-                        ${
-                          card.isMatched
-                            ? "bg-green-100 border-4 border-green-400"
-                            : "bg-white border-4 border-gray-200"
-                        }
-                      `}
+                        className="absolute inset-0 w-full h-full rounded-2xl flex items-center justify-center shadow-xl"
                         style={{
                           backfaceVisibility: "hidden",
                           WebkitBackfaceVisibility: "hidden",
                           transform: "rotateY(180deg)",
                         }}
                       >
-                        <span className="text-6xl">{card.value}</span>
+                        <span className={difficulty === "easy" ? "text-6xl" : "text-4xl"}>
+                          {card.value}
+                        </span>
                       </div>
                     </motion.div>
                   </motion.div>

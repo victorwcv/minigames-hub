@@ -32,7 +32,7 @@ const CARD_EMOJIS = [
 const DIFFICULTY_CONFIG: Record<Difficulty, DifficultyConfig> = {
   easy: { pairs: 6, initialTime: 40, timeBonus: 8, cols: 4 },
   medium: { pairs: 10, initialTime: 60, timeBonus: 6, cols: 5 },
-  hard: { pairs: 12, initialTime: 80, timeBonus: 4, cols: 6 },
+  hard: { pairs: 15, initialTime: 80, timeBonus: 4, cols: 6 },
 };
 
 const shuffleArray = <T>(array: T[]): T[] => {
