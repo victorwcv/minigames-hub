@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy minigames-hub to GitHub Pages
 
 on:
   push:
@@ -22,21 +22,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out the repository
+      - name: 📥 Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: 🧰 Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '22'
-    
-      - name: Install dependencies
+
+      - name: 📦 Install dependencies
         run: npm install
 
-      - name: Build the project
+      - name: 🏗️ Build the project
         run: npm run build
 
-      - name: Deploy to GitHub Pages
+      - name: 🚀 Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
