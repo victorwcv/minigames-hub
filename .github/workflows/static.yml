@@ -28,14 +28,12 @@ jobs:
       - name: 🧰 Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "20"
+          node-version: "22"
 
       - name: 📦 Install dependencies
-        run: npm install
-
-      # FIX: instala el binario correcto de Rollup para Linux (bug npm)
-      - name: 🩹 Fix Rollup binary issue
-        run: npm install @rollup/rollup-linux-x64-gnu
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install
 
       - name: 🏗️ Build the project
         run: npm run build
