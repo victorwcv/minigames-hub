@@ -4,7 +4,7 @@ import { GamePage } from "@/pages/GamePage";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/minigames-hub/">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/game/:gameId" element={<GamePage />} />
