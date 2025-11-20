@@ -10,7 +10,7 @@ export const GAMES: Game[] = [
     players: "1-2 jugadores",
     duration: "2-5 min",
     route: "/game/tic-tac-toe",
-    gradient: "from-primary to-primary-dark",
+    gradient: "from-yellow-500 to-yellow-600",
   },
   {
     id: "snake",
@@ -21,7 +21,7 @@ export const GAMES: Game[] = [
     players: "1 jugador",
     duration: "5-10 min",
     route: "/game/snake",
-    gradient: "from-primary-light to-primary",
+    gradient: "from-blue-500 to-blue-600",
   },
   {
     id: "pairs",
@@ -32,6 +32,6 @@ export const GAMES: Game[] = [
     players: "1 jugador",
     duration: "3-10 min",
     route: "/game/pairs",
-    gradient: "from-primary to-primary-light",
+    gradient: "from-green-500 to-green-600",
   },
 ];

@@ -13,22 +13,17 @@ export const GameCard = ({ game, index }: GameCardProps) => {
 
   return (
     <motion.div
-      whileHover={{ y: -7, transition: { duration: 0.3 } }}
-      className="flex flex-col bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-gray-100"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: index * 0.1 }}
     >
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3, delay: index * 0.1 }}
-        className="flex-1 flex flex-col"
-      >
+      <div className="flex flex-col bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-gray-100 h-full no-select">
         {/* Imagen del juego */}
         <div
           className={`h-48 bg-gradient-to-br ${game.gradient} flex items-center justify-center text-6xl`}
         >
           <span>{game.icon}</span>
         </div>
-
         {/* Contenido */}
         <div className="p-6 flex-1 flex flex-col">
           <h2 className="text-2xl font-bold text-gray-800 mb-3">{game.title}</h2>
@@ -48,13 +43,13 @@ export const GameCard = ({ game, index }: GameCardProps) => {
 
           {/* Botón de jugar */}
           <button
-            className="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-all duration-300 active:scale-95  cursor-pointer"
+            className="w-full bg-accent-500 hover:bg-accent-600 text-white font-semibold py-3 rounded-lg transition-all duration-300 active:scale-95  cursor-pointer"
             onClick={() => navigate(game.route)}
           >
             Jugar Ahora
           </button>
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   );
 };

@@ -37,10 +37,10 @@ export const Snake = () => {
           <div className="bg-gray-50 rounded-2xl p-6 shadow-md">
             <h3 className="text-lg font-bold text-gray-800 mb-4">Puntuación</h3>
             <div className="space-y-3">
-              <div className="bg-white rounded-xl p-4 shadow-sm border-2 border-primary">
+              <div className="bg-white rounded-xl p-4 shadow-sm border-2 border-accent-500">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-semibold text-gray-700">Puntos</span>
-                  <span className="text-3xl font-bold text-primary">{score}</span>
+                  <span className="text-3xl font-bold text-accent-500">{score}</span>
                 </div>
               </div>
               <div className="bg-white rounded-xl p-4 shadow-sm border-2 border-yellow-300">
@@ -63,9 +63,9 @@ export const Snake = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                className="h-40 text-center py-6 bg-primary/10 rounded-xl shadow-md"
+                className="h-40 text-center py-6 bg-accent-500/10 rounded-xl shadow-md"
               >
-                <Gamepad2 size={48} className="mx-auto mb-3 text-primary" />
+                <Gamepad2 size={48} className="mx-auto mb-3 text-accent-500" />
                 <p className="text-lg font-bold text-gray-800 mb-2">¡Listo para jugar!</p>
                 <p className="text-sm text-gray-600">Presiona Iniciar o ESPACIO</p>
               </motion.div>
@@ -118,7 +118,7 @@ export const Snake = () => {
             {gameStatus === "idle" && (
               <button
                 onClick={startGame}
-                className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-primary hover:bg-primary-dark text-white font-semibold rounded-xl transition-all hover:scale-105 active:scale-95 shadow-md"
+                className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-accent-500 hover:bg-accent-600 text-white font-semibold rounded-xl transition-all hover:scale-105 active:scale-95 shadow-md"
               >
                 <Play size={20} />
                 Iniciar Juego
@@ -172,7 +172,7 @@ export const Snake = () => {
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   className={`absolute ${
-                    index === 0 ? "bg-primary" : "bg-primary-light"
+                    index === 0 ? "bg-accent-500" : "bg-accent-400"
                   } rounded-sm`}
                   style={{
                     width: cellSize - 2,
@@ -235,7 +235,7 @@ export const Snake = () => {
               <div></div>
               <button
                 onClick={() => changeDirection("UP")}
-                className="aspect-square bg-white active:bg-primary border-2 border-gray-200 rounded-lg flex items-center justify-center transition-colors active:scale-95"
+                className="aspect-square bg-white active:bg-accent-400 border-2 border-gray-200 rounded-lg flex items-center justify-center transition-colors active:scale-95"
                 disabled={gameStatus !== "playing"}
               >
                 <ArrowUp size={24} />
@@ -243,21 +243,21 @@ export const Snake = () => {
               <div></div>
               <button
                 onClick={() => changeDirection("LEFT")}
-                className="aspect-square bg-white active:bg-primary border-2 border-gray-200 rounded-lg flex items-center justify-center transition-colors active:scale-95"
+                className="aspect-square bg-white active:bg-accent-400 border-2 border-gray-200 rounded-lg flex items-center justify-center transition-colors active:scale-95"
                 disabled={gameStatus !== "playing"}
               >
                 <ArrowLeft size={24} />
               </button>
               <button
                 onClick={() => changeDirection("DOWN")}
-                className="aspect-square bg-white active:bg-primary border-2 border-gray-200 rounded-lg flex items-center justify-center transition-colors active:scale-95"
+                className="aspect-square bg-white active:bg-accent-400 border-2 border-gray-200 rounded-lg flex items-center justify-center transition-colors active:scale-95"
                 disabled={gameStatus !== "playing"}
               >
                 <ArrowDown size={24} />
               </button>
               <button
                 onClick={() => changeDirection("RIGHT")}
-                className="aspect-square bg-white active:bg-primary border-2 border-gray-200 rounded-lg flex items-center justify-center transition-colors active:scale-95"
+                className="aspect-square bg-white active:bg-accent-400 border-2 border-gray-200 rounded-lg flex items-center justify-center transition-colors active:scale-95"
                 disabled={gameStatus !== "playing"}
               >
                 <ArrowRight size={24} />

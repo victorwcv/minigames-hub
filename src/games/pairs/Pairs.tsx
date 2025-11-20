@@ -58,13 +58,13 @@ export const Pairs = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-4 shadow-sm border-2 border-primary">
+              <div className="bg-white rounded-xl p-4 shadow-sm border-2 border-accent-500">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Target size={18} className="text-primary" />
+                    <Target size={18} className="text-accent-500" />
                     <span className="text-sm font-semibold text-gray-700">Pares</span>
                   </div>
-                  <span className="text-3xl font-bold text-primary">
+                  <span className="text-3xl font-bold text-accent-500">
                     {matchedPairs}/{totalPairs}
                   </span>
                 </div>
@@ -106,7 +106,7 @@ export const Pairs = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                className="text-center py-6 bg-primary/10 rounded-xl shadow-md"
+                className="text-center py-6 bg-accent-500/10 rounded-xl shadow-md"
               >
                 <p className="text-5xl mb-3">🃏</p>
                 <p className="text-lg font-bold text-gray-800 mb-2">¡Encuentra los pares!</p>
@@ -192,7 +192,7 @@ export const Pairs = () => {
             {cardsReady && gameStatus === "idle" && (
               <button
                 onClick={startGame}
-                className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-primary hover:bg-primary-dark text-white font-semibold rounded-xl transition-all hover:scale-105 active:scale-95 shadow-md"
+                className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-accent-500 hover:bg-accent-600 text-white font-semibold rounded-xl transition-all hover:scale-105 active:scale-95 shadow-md"
               >
                 <Play size={20} />
                 Iniciar Juego
@@ -202,7 +202,7 @@ export const Pairs = () => {
             {(gameStatus === "won" || gameStatus === "gameOver") && (
               <button
                 onClick={resetGame}
-                className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-primary hover:bg-primary-dark text-white font-semibold rounded-xl transition-all hover:scale-105 active:scale-95 shadow-md"
+                className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-accent-500 hover:bg-accent-600 text-white font-semibold rounded-xl transition-all hover:scale-105 active:scale-95 shadow-md"
               >
                 <Play size={20} />
                 Jugar de Nuevo
@@ -271,7 +271,7 @@ export const Pairs = () => {
                     <button
                       key={diff}
                       onClick={() => prepareCards(diff)}
-                      className="w-full px-5 py-4 rounded-xl font-semibold transition-all bg-white text-gray-700 hover:bg-primary hover:text-white border-2 border-gray-200 hover:border-primary hover:scale-105"
+                      className="w-full px-5 py-4 rounded-xl font-semibold transition-all bg-white text-gray-700 hover:bg-accent-500 hover:text-white border-2 border-gray-200 hover:border-accent-500 hover:scale-105"
                     >
                       {DIFFICULTY_LABELS[diff]}
                     </button>
@@ -297,7 +297,7 @@ export const Pairs = () => {
                   >
                     <motion.div
                       onClick={() => {
-                        if (!card.isMatched) flipCard(card.id); // <- no permites volver a dar vuelta si ya está matched
+                        if (!card.isMatched) flipCard(card.id);
                       }}
                       className={`
                         relative w-full h-full cursor-pointer
@@ -309,7 +309,6 @@ export const Pairs = () => {
                         }
                       `}
                       animate={{
-                        // cuando está volteada o está matched, muestro el contenido
                         rotateY: card.isFlipped || card.isMatched ? 180 : 0,
                       }}
                       transition={{
@@ -323,14 +322,14 @@ export const Pairs = () => {
                     >
                       {/* back */}
                       <div
-                        className="absolute inset-0 w-full h-full rounded-2xl flex items-center justify-center bg-gradient-to-br from-primary to-primary-dark shadow-xl"
+                        className="absolute inset-0 w-full h-full rounded-2xl flex items-center justify-center bg-gradient-to-tl from-accent-500 to-accent-600 shadow-xl"
                         style={{
                           backfaceVisibility: "hidden",
                           WebkitBackfaceVisibility: "hidden",
                         }}
                       >
                         <div className="w-1/3 h-1/3 bg-white/95 rounded-full">
-                          <img src="/vc-logo.png" alt="logo" />
+                          <img src="/minigames-hub/vc-logo.png" alt="logo" />
                         </div>
                       </div>
 

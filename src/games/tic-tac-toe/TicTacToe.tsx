@@ -45,7 +45,7 @@ export const TicTacToe = () => {
                 }}
                 className={`w-full flex items-center gap-3 px-5 py-4 rounded-xl font-semibold transition-all ${
                   gameMode === "pvp"
-                    ? "bg-primary text-white shadow-lg scale-105"
+                    ? "bg-accent-500 text-white shadow-lg scale-105"
                     : "bg-white text-gray-700 hover:bg-gray-100 border-2 border-gray-200"
                 }`}
               >
@@ -59,7 +59,7 @@ export const TicTacToe = () => {
                 }}
                 className={`w-full flex items-center gap-3 px-5 py-4 rounded-xl font-semibold transition-all ${
                   gameMode === "cpu"
-                    ? "bg-primary text-white shadow-lg scale-105"
+                    ? "bg-accent-500 text-white shadow-lg scale-105"
                     : "bg-white text-gray-700 hover:bg-gray-100 border-2 border-gray-200"
                 }`}
               >
@@ -100,7 +100,7 @@ export const TicTacToe = () => {
           <div className="space-y-3">
             <button
               onClick={resetGame}
-              className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-primary hover:bg-primary-dark text-white font-semibold rounded-xl transition-all hover:scale-105 active:scale-95 shadow-md"
+              className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-accent-500 hover:bg-accent-600 text-white font-semibold rounded-xl transition-all hover:scale-105 active:scale-95 shadow-md"
             >
               <RotateCcw size={20} />
               Nuevo Juego
@@ -125,10 +125,10 @@ export const TicTacToe = () => {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
-                  className="text-center py-4 bg-primary/10 rounded-xl shadow-md mb-6"
+                  className="text-center py-4 bg-accent-500/10 rounded-xl shadow-md mb-6"
                 >
                   <p className="text-sm font-semibold text-gray-600 mb-1">Turno actual</p>
-                  <p className="text-4xl font-bold text-primary">{currentPlayer}</p>
+                  <p className="text-4xl font-bold text-accent-500">{currentPlayer}</p>
                 </motion.div>
               ) : (
                 <motion.div
@@ -151,7 +151,7 @@ export const TicTacToe = () => {
             </AnimatePresence>
 
             {/* Tablero */}
-            <div className="bg-white border-2 border-primary p-8 rounded-2xl">
+            <div className="bg-white border-2 border-accent-500 p-8 rounded-2xl">
               <div className="grid grid-cols-3 gap-4">
                 {board.map((cell, index) => (
                   <motion.button

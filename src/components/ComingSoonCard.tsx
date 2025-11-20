@@ -11,7 +11,7 @@ export const ComingSoonCard = ({ index }: ComingSoonCardProps) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden shadow-lg border-2 border-dashed border-gray-300 relative"
+      className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden shadow-lg border-2 border-dashed border-gray-300 relative no-select"
     >
       {/* Badge de "Próximamente" */}
       <div className="absolute top-4 right-4 z-10">
@@ -25,7 +25,7 @@ export const ComingSoonCard = ({ index }: ComingSoonCardProps) => {
             repeat: Infinity,
             repeatDelay: 1
           }}
-          className="bg-primary text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg"
+          className="bg-accent-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg"
         >
           <Clock size={12} />
           SOON
@@ -79,7 +79,7 @@ export const ComingSoonCard = ({ index }: ComingSoonCardProps) => {
           transition={{ duration: 2, repeat: Infinity }}
           className="flex items-center gap-2 mb-3"
         >
-          <Sparkles className="text-primary" size={24} />
+          <Sparkles className="text-accent-500" size={24} />
           <h2 className="text-2xl font-bold text-gray-700">
             Más Juegos Próximamente
           </h2>
@@ -99,7 +99,7 @@ export const ComingSoonCard = ({ index }: ComingSoonCardProps) => {
               transition={{ delay: 0.5 + (i * 0.1) }}
               className="text-sm text-gray-500 flex items-center gap-2"
             >
-              <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
+              <span className="w-1.5 h-1.5 bg-accent-500 rounded-full"></span>
               {game}
             </motion.div>
           ))}

@@ -1,15 +1,29 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #0099A8;
-  --color-primary-dark: #008A96;
-  --color-primary-light: #00B4C5;
-  --color-dark: #3b4d54;
-  --color-dark-light: #4a5d66;
+  --color-accent-50: #e4f7ff;
+  --color-accent-100: #cff0ff;
+  --color-accent-200: #88e0ff;
+  --color-accent-300: #00d2fb;
+  --color-accent-400: #00bbdf;
+  --color-accent-500: #00a6c7;
+  --color-accent-600: #00829d;
+  --color-accent-700: #006277;
+  --color-accent-800: #004150;
+  --color-accent-900: #00262f;
+  --color-accent-950: #00161d;
+
+  --color-primary-light: #e4f7ff;
+  --color-primary-dark: #00262f;
 }
 
 @layer utilities {
   .perspective-1000 {
     perspective: 1000px;
+  }
+
+  .no-select {
+    user-select: none;
+    cursor: default;
   }
 }
